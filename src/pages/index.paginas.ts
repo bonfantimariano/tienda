@@ -1,3 +1,4 @@
+export { HomePage } from "./home/home";
 export { CarritoPage } from "./carrito/carrito";
 export { CategoriasPage } from "./categorias/categorias";
 export { LoginPage } from "./login/login";

@@ -9,11 +9,48 @@ export class ProductosService {
 
     pagina:number = 0;
     productos:any[] = [];
+    lineas:any[] = [];
+    por_categoria:any[] = [];
 
   constructor(public http: Http) {
 
       this.cargar_todos();
+      this.cargar_lineas();
 
+  }
+
+  cargar_lineas() {
+
+      let url = URL_SERVICIOS + "/lineas";
+
+      this.http.get( url )
+            .map( resp=> resp.json() )
+            .subscribe( data=>{
+                if( data.error ){
+                    //problemas
+                } else {
+                    this.lineas = data.lineas
+                }
+
+            });
+  }
+
+
+  cargar_por_categoria( categoria:number) {
+
+      let url = URL_SERVICIOS + "/productos/por_tipo/" + categoria;
+
+      this.http.get( url )
+            .map( resp=> resp.json() )
+            .subscribe( data=>{
+                if( data.error ){
+                    //problemas
+                } else {
+                    console.log(data.productos);
+                    this.por_categoria = data.productos;
+                }
+
+            });
   }
 
   cargar_todos() {
@@ -39,11 +76,11 @@ export class ProductosService {
 
                 resolve();
 
-            })
+            });
 
 
 
-      } )
+      } );
 
       return promesa;
 

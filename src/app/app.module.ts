@@ -14,20 +14,55 @@ import { CarritoService,
          ProductosService,
          UsuarioService } from '../providers/index.services';
 
+//pipes
+import { ImagenPipe } from "../pipes/imagen/imagen";
+
+//pages
+import {  CarritoPage,
+          CategoriasPage,
+          LoginPage,
+          OrdenesPage,
+          OrdenesDetallePage,
+          PorCategoriasPage,
+          TabsPage,
+          ProductoPage } from "../pages/index.paginas";
+
+//storage
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    ImagenPipe,
+    HomePage,
+    CarritoPage,
+    CategoriasPage,
+    LoginPage,
+    OrdenesPage,
+    OrdenesDetallePage,
+    PorCategoriasPage,
+    TabsPage,
+    ProductoPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
+  exports: [ImagenPipe],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CarritoPage,
+    CategoriasPage,
+    LoginPage,
+    OrdenesPage,
+    OrdenesDetallePage,
+    PorCategoriasPage,
+    TabsPage,
+    ProductoPage
   ],
   providers: [
     StatusBar,
